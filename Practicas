@@ -22,18 +22,18 @@
   (/ suma_elem longitud))
 
 #|Sección 2|#
-#|mconcat - Dadas dos listas, regresa la concatenación de la primera con la segunda.|#
+#|mconcat- Dadas dos listas, regresa la concatenación de la primera con la segunda.|#
 (define (mconcat l1 l2)
   (if(empty? l1)l2
      (cons (car l1) (mconcat (cdr l1) l2))))
 
-#|mmap - Dada una función de aridad 1 y una lista, regresar una lista con la aplicación de la función a cada 
+#|mmap- Dada una función de aridad 1 y una lista, regresar una lista con la aplicación de la función a cada 
 uno de los elementos de la lista original|#
 (define (mmap f l)
   (if(empty? l)empty
      (cons (f (car l)) (mmap f (cdr l)))))
 
-#|3.mfilter - Dado un predicado de un argumento y una lista, regresa la lista original sin los elementos que al aplicar
+#|mfilter- Dado un predicado de un argumento y una lista, regresa la lista original sin los elementos que al aplicar
 el predicado, regrese falso|#
 (define (mfilter p l)
   (cond
