@@ -1,0 +1,44 @@
+#lang plai
+#|Practica 1|#
+
+#|Sección 1|#
+#|Pow. Dados z y w, regresa z a la w|#
+
+(define (pow z w)
+  (if (= w 0) 1
+      (* z (pow (z (- w 1))))))
+
+#|Average- Dado una lista no vacia de numeros, regresar el promedio de esta|#
+
+(define (average list1)
+  #|suma_elem- funcion auxiliar que suma los elementos de la lista|#
+  (define (suma_elem list1)
+   (if(null? list1) 0
+     (+ (car list1) (suma_elem(cdr list1)))))
+  #|longitud- función auxiliar que da la longitud de la lista|#
+  (define (longitud list1)
+    (if(null? list1) 0
+      (+ 1 (longitud(cdr list1)))))
+  (/ suma_elem longitud))
+
+#|Sección 2|#
+#|mconcat - Dadas dos listas, regresa la concatenación de la primera con la segunda.|#
+(define (mconcat l1 l2)
+  (if(empty? l1)l2
+     (cons (car l1) (mconcat (cdr l1) l2))))
+
+#|mmap - Dada una función de aridad 1 y una lista, regresar una lista con la aplicación de la función a cada 
+uno de los elementos de la lista original|#
+(define (mmap f l)
+  (if(empty? l)empty
+     (cons (f (car l)) (mmap f (cdr l)))))
+
+#|3.mfilter - Dado un predicado de un argumento y una lista, regresa la lista original sin los elementos que al aplicar
+el predicado, regrese falso|#
+(define (mfilter p l)
+  (cond
+    [(empty? l) empty]
+    [(eq? (p (car l)) #t) (cons (car l) (mfilter p (cdr l)))]
+    [else (mfilter p (cdr l))]))
+
+
