@@ -1,0 +1,55 @@
+#lang plai
+
+;Array
+(define-type Arreglo
+  [MArreglo (n number?)
+            (l (listof number?))])
+
+;(MArreglo 4 (list 1 2 3))
+
+;List
+(define-type MLista
+  [LVacia]
+  [MCons (n number?)
+         (rest MLista?)])
+
+;(MCons 7 (MCons 4 (MCons 10 (LVacia))))
+
+;5.-printML
+(define (printML ml)
+  (if (LVacia? ml)
+      "[]"
+      (if(LVacia? (MCons-rest ml))
+        (string-append "[" (~a (MCons-n ml)) "]")
+         (string-append "[" (auxPrint ml) "]"))))
+ 
+(define (auxPrint ml)
+  (if (LVacia? ml)
+      ""
+      (if(LVacia? (MCons-rest ml))
+         (string-append (~a (MCons-n ml)))
+         (string-append (~a (MCons-n ml)) ", " (auxPrint (MCons-rest ml))))))
+
+;(printML (LVacia))
+;(printML (MCons 7 (LVacia)))
+;(printML (MCons 7 (MCons 4 (MCons 10 (LVacia)))))
+;(printML (MCons 7 (MCons 4 (MCons 10 (MCons 5 (LVacia))))))
+
+;concatML
+(define (concatML ml1 ml2)
+  (if(LVacia? ml1)
+     ml2
+      (MCons (MCons-n ml1) (concatML (MCons-rest ml1) ml2))))
+
+;(concatML (MCons 7 (MCons 4 (LVacia))) (MCons 1 (LVacia)))
+;(concatML (MCons 7 (MCons 4 (LVacia))) (MCons 1 (MCons 10 (LVacia))))
+;(printML (concatML (MCons 7 (MCons 4 (LVacia))) (MCons 1 (MCons 10 (LVacia)))))
+
+;lengthML
+(define (lengthML ml)
+  (if(LVacia? ml)
+     0
+     (+ 1 (lengthML (MCons-rest ml)))))
+
+;(lengthML (LVacia))
+;(lengthML (MCons 7 (MCons 4 (MCons 5 (MCons 1 (LVacia))))))
