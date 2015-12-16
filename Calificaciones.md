@@ -20,6 +20,13 @@ las cinco pruebas por función nuevamente.
 
 **Calificación: 0**
 
+### Practica 4
+
+**Calificación: 0**
+
+### Practica 5
+
+**Calificación: 0**
 
 ## Tareas
 
@@ -28,5 +35,9 @@ las cinco pruebas por función nuevamente.
 **Calificación: 0**
 
 ### Tarea 2
+
+**Calificación: 0**
+
+### Tarea 3
 
 **Calificación: 0**
